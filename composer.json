@@ -1,0 +1,21 @@
+{
+    "name": "noorabdi/noor-auth",
+    "description": "Customized Authentication using laravel jetstream and fortify",
+    "type": "library",
+    "require": {
+        "laravel/laravel": "^10.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Noorabdi\\NoorAuth\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "noorfarooqy",
+            "email": "noor@drongo.vip"
+        }
+    ],
+    "minimum-stability": "stable"
+}
