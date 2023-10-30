@@ -1,14 +1,21 @@
 {
-    "name": "noorabdi/noor-auth",
+    "name": "noorfarooqy/noorauth",
     "description": "Customized Authentication using laravel jetstream and fortify",
     "type": "library",
     "require": {
-        "laravel/laravel": "^10.2"
+        "laravel/jetstream": "^4.0",
+        "laravel/framework": "^10.29",
+        "laravel/sanctum": "^3.3",
+        "spatie/laravel-permission": "^6.0"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Noorabdi\\NoorAuth\\": "src/"
+            "Noorfarooqy\\NoorAuth\\": "src/",
+            "Noorfarooqy\\NoorAuth\\Http\\Controllers\\": "app/Http/Controllers",
+            "Noorfarooqy\\NoorAuth\\Services\\": "app/Services",
+            "Noorfarooqy\\NoorAuth\\Traits\\": "app/Traits",
+            "Noorfarooqy\\NoorAuth\\Interfaces\\": "app/Interfaces"
         }
     },
     "authors": [
@@ -17,5 +24,12 @@
             "email": "noor@drongo.vip"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Noorfarooqy\\NoorAuth\\NoorAuthServiceProvider"
+            ]
+        }
+    }
 }
