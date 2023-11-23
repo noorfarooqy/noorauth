@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Noorfarooqy\NoorAuth\Http\Controllers\AuthController;
 
-Route::group(['prefix' => '/v1/na/', 'as' => 'na.api.'], function () {
 
-    Route::post('/login', [AuthController::class, 'loginAuth'])->name('login');
-    Route::post('/register', [AuthController::class, 'registerAuth'])->name('login');
+Route::get('/login', [AuthController::class, 'loginView'])->name('login');
+Route::get('/register', [AuthController::class, 'registerView'])->name('register');
+Route::group(['prefix' => '/v1/na/', 'as' => 'na.'], function () {
 });

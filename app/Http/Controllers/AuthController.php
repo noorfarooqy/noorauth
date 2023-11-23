@@ -7,6 +7,14 @@ use Noorfarooqy\NoorAuth\Services\AuthServices;
 
 class AuthController extends Controller
 {
+    public function loginView(Request $request)
+    {
+        return view('noorauth::login');
+    }
+    public function registerView(Request $request)
+    {
+        return view('noorauth::register');
+    }
     //
     public function loginAuth(Request $request, AuthServices $authServices)
     {
