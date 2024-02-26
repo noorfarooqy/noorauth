@@ -3,7 +3,7 @@
 namespace Noorfarooqy\NoorAuth\Services;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+
 
 class AuthServices extends NoorServices
 {
