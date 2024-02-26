@@ -3,7 +3,7 @@
 namespace Noorfarooqy\NoorAuth\Services;
 
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class AuthServices extends NoorServices
 {
@@ -27,8 +27,8 @@ class AuthServices extends NoorServices
         $data = $this->ValidatedData();
 
         $user = $user = User::where('email', $data['email'])->first();
-        $is_authentic = Hash::check($data['password'], $user?->password);
-        if ($is_authentic && Auth::attempt($data)) {
+        // $is_authentic = Hash::check($data['password'], $user?->password);
+        if (Auth::attempt($data)) {
             $user = User::where('email', $data['email'])->first();
             $token = $this->createUserToken($user);
             $resp = [
