@@ -1,6 +1,6 @@
 <?php
 
-namespace Noorfarooqy\Commands;
+namespace Noorfarooqy\NoorAuth\Commands;
 
 use Illuminate\Console\Command;
 use Noorfarooqy\NoorAuth\Services\AuthServices;
