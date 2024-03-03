@@ -4,6 +4,7 @@ namespace Noorfarooqy\NoorAuth\Services;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -127,7 +128,8 @@ class AuthServices extends NoorServices
                     }
                 }
             } catch (\Throwable $th) {
-                //throw $th;
+                Log::info('---Failed to creat role or permission ');
+                Log::info($th->getMessage());
             }
         }
     }
@@ -137,10 +139,12 @@ class AuthServices extends NoorServices
         $given_role = Role::where('name', $role)->get()->first();
         if (!$given_role) {
             $given_role = Role::create(['name' => $role]);
+            echo 'created new role ' . $role;
         }
 
         if (!$given_role->hasPermissionTo($permission)) {
             $given_role->givePermissionTo($permission);
+            echo 'given new permission ' . $permission . ' - ' . $role;
         }
     }
 }
