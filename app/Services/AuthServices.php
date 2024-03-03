@@ -99,7 +99,7 @@ class AuthServices extends NoorServices
         foreach ($modules as $key => $module) {
             foreach ($permissions as $key => $permission) {
                 $action = $module . '_' . $permission;
-                $existing_permission = Permission::where('name', $action);
+                $existing_permission = Permission::where('name', $action)->get()->first();
                 if (!$existing_permission) {
                     $new_permission = Permission::create(['name' => $action]);
                 }
@@ -139,7 +139,7 @@ class AuthServices extends NoorServices
             $given_role = Role::create(['name' => $role]);
         }
 
-        if (!$given_role->hasPermissionTo($permission, null)) {
+        if (!$given_role->hasPermissionTo($permission)) {
             $given_role->givePermissionTo($permission);
         }
     }
