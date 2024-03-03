@@ -111,7 +111,7 @@ class AuthServices extends NoorServices
         $roles = config('noorauth.roles');
         foreach ($roles as $key => $role) {
             try {
-                foreach ($roles['allowed_permissions'] as $key => $allowed_permission) {
+                foreach ($role['allowed_permissions'] as $key => $allowed_permission) {
                     if (in_array('*', $allowed_permission['permissions'])) {
                         $all_permissions = config('noorauth.permissions', []);
                         foreach ($all_permissions as $pkey => $permission) {

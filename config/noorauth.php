@@ -14,13 +14,15 @@ return [
         'read', 'write', 'update', 'activate', 'deactivate', 'suspend', 'delete',
     ],
     'roles' => [
-        'admin' => [
-            'allowed_permissions' => [
-                [
-                    'module' => 'scm',
-                    'permissions' => ['*'],
-                ]
+        [
+            'admin' => [
+                'allowed_permissions' => [
+                    [
+                        'module' => 'scm',
+                        'permissions' => ['*'],
+                    ]
+                ],
             ],
-        ],
+        ]
     ],
 ];
