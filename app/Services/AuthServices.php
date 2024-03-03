@@ -5,6 +5,7 @@ namespace Noorfarooqy\NoorAuth\Services;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Noorfarooqy\NoorAuth\Events\UserRegisteredEvent;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -77,6 +78,8 @@ class AuthServices extends NoorServices
                 'user' => $user,
                 'api_token' => $token->plainTextToken, // TO DO Set the scope for the token using user permissions
             ];
+
+            UserRegisteredEvent::dispatch($user);
 
             return $this->getResponse($resp);
         } catch (\Throwable $th) {
