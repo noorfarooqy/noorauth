@@ -3,6 +3,7 @@
 namespace Noorfarooqy\NoorAuth;
 
 use Illuminate\Support\ServiceProvider;
+use Noorfarooqy\NoorAuth\Commands\NoorPermissions;
 
 class NoorAuthServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,10 @@ class NoorAuthServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../database/migrations/' => database_path('migrations/'),
         ], 'noorauth-database');
+
+        $this->commands([
+            NoorPermissions::class,
+        ]);
     }
     public function register()
     {
