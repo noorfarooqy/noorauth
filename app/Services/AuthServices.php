@@ -117,13 +117,13 @@ class AuthServices extends NoorServices
                         $all_permissions = config('noorauth.permissions', []);
                         foreach ($all_permissions as $pkey => $permission) {
                             $action = $allowed_permission['module'] . '_' . $permission;
-                            $this->CreateRoleOrGivePermission($role, $action);
+                            $this->CreateRoleOrGivePermission($key, $action);
                         }
                     } else {
                         $given_permissions = $allowed_permission['permissions'];
                         foreach ($given_permissions as $pkey => $permission) {
                             $action = $allowed_permission['module'] . '_' . $permission;
-                            $this->CreateRoleOrGivePermission($role, $action);
+                            $this->CreateRoleOrGivePermission($key, $action);
                         }
                     }
                 }
