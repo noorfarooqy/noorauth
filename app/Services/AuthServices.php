@@ -4,6 +4,8 @@ namespace Noorfarooqy\NoorAuth\Services;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AuthServices extends NoorServices
 {
@@ -86,5 +88,59 @@ class AuthServices extends NoorServices
     {
         //TO DO set user token scope
         return $user?->createToken('auth_token');
+    }
+
+
+    public function RunPermissions()
+    {
+        $modules = config('noor-permissions.modules', []);
+        $permissions = config('noor-permissions.permissions', []);
+
+        foreach ($modules as $key => $module) {
+            foreach ($permissions as $key => $permission) {
+                $action = $module . '_' . $permission;
+                $existing_permission = Permission::where('name', $action);
+                if (!$existing_permission) {
+                    $new_permission = Permission::create(['name' => $action]);
+                }
+            }
+        }
+    }
+    public function RunRoles()
+    {
+        $roles = config('noor-permissions.roles');
+        foreach ($roles as $key => $role) {
+            try {
+                foreach ($roles['allowed_permissions'] as $key => $allowed_permission) {
+                    if (in_array('*', $allowed_permission['permissions'])) {
+                        $all_permissions = config('noor-permissions.permissions', []);
+                        foreach ($all_permissions as $pkey => $permission) {
+                            $action = $allowed_permission['module'] . '_' . $permission;
+                            $this->CreateRoleOrGivePermission($role, $action);
+                        }
+                    } else {
+                        $given_permissions = $allowed_permission['permissions'];
+                        foreach ($given_permissions as $pkey => $permission) {
+                            $action = $allowed_permission['module'] . '_' . $permission;
+                            $this->CreateRoleOrGivePermission($role, $action);
+                        }
+                    }
+                }
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+    }
+
+    public function CreateRoleOrGivePermission($role, $permission)
+    {
+        $given_role = Role::where('name', $role)->get()->first();
+        if (!$given_role) {
+            $given_role = Role::create(['name' => $role]);
+        }
+
+        if (!$given_role->hasPermissionTo($permission, null)) {
+            $given_role->givePermissionTo($permission);
+        }
     }
 }

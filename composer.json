@@ -6,7 +6,7 @@
         "laravel/jetstream": "^4.0",
         "laravel/framework": "^10.29",
         "laravel/sanctum": "^3.3",
-        "spatie/laravel-permission": "^6.0"
+        "spatie/laravel-permission": "^6.4"
     },
     "license": "MIT",
     "autoload": {
