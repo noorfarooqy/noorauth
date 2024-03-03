@@ -51,7 +51,7 @@ class AuthServices extends NoorServices
     {
         $this->request = $request;
         $this->setResponseType();
-        $register_domain = config('noor-auth.register_domain');
+        $register_domain = config('noorauth.register_domain');
         $this->rules = [
             'name' => 'required|string|max:45',
             'email' => 'required|email|max:125|regex:/(.*)' . $register_domain . '/i|unique:users',
@@ -93,8 +93,8 @@ class AuthServices extends NoorServices
 
     public function RunPermissions()
     {
-        $modules = config('noor-permissions.modules', []);
-        $permissions = config('noor-permissions.permissions', []);
+        $modules = config('noorauth.modules', []);
+        $permissions = config('noorauth.permissions', []);
 
         foreach ($modules as $key => $module) {
             foreach ($permissions as $key => $permission) {
@@ -108,12 +108,12 @@ class AuthServices extends NoorServices
     }
     public function RunRoles()
     {
-        $roles = config('noor-permissions.roles');
+        $roles = config('noorauth.roles');
         foreach ($roles as $key => $role) {
             try {
                 foreach ($roles['allowed_permissions'] as $key => $allowed_permission) {
                     if (in_array('*', $allowed_permission['permissions'])) {
-                        $all_permissions = config('noor-permissions.permissions', []);
+                        $all_permissions = config('noorauth.permissions', []);
                         foreach ($all_permissions as $pkey => $permission) {
                             $action = $allowed_permission['module'] . '_' . $permission;
                             $this->CreateRoleOrGivePermission($role, $action);

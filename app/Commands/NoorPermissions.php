@@ -26,7 +26,10 @@ class NoorPermissions extends Command
      */
     public function handle()
     {
+        $this->info('------RUNNING PERMISSIONS -------');
         $authServices = new AuthServices();
         $authServices->RunPermissions();
+        $this->info('------RUNNING ROLES -------');
+        $authServices->RunRoles();
     }
 }

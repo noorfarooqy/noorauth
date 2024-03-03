@@ -21,7 +21,7 @@ class NoorAuthServiceProvider extends ServiceProvider
         ], 'noorauth-errors');
 
         $this->publishes([
-            __DIR__ . '/../config/noor-auth.php' => config_path('noor-auth.php'),
+            __DIR__ . '/../config/noorauth.php' => config_path('noorauth.php'),
         ], 'noorauth-config');
 
         $this->publishes([
