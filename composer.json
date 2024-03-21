@@ -17,7 +17,8 @@
             "Noorfarooqy\\NoorAuth\\Traits\\": "app/Traits",
             "Noorfarooqy\\NoorAuth\\Interfaces\\": "app/Interfaces",
             "Noorfarooqy\\NoorAuth\\Commands\\": "app/Commands",
-            "Noorfarooqy\\NoorAuth\\Events\\": "app/Events"
+            "Noorfarooqy\\NoorAuth\\Events\\": "app/Events",
+            "Noorfarooqy\\NoorAuth\\Middleware\\": "app/Middleware"
         }
     },
     "authors": [

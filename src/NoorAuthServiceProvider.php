@@ -4,6 +4,7 @@ namespace Noorfarooqy\NoorAuth;
 
 use Illuminate\Support\ServiceProvider;
 use Noorfarooqy\NoorAuth\Commands\NoorPermissions;
+use Noorfarooqy\NoorAuth\Middleware\UserValidationMiddleware;
 
 class NoorAuthServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,8 @@ class NoorAuthServiceProvider extends ServiceProvider
         $this->commands([
             NoorPermissions::class,
         ]);
+        $router = $this->app['router'];
+        $router->aliasMiddleware('is_system', UserValidationMiddleware::class);
     }
     public function register()
     {

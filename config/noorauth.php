@@ -25,4 +25,7 @@ return [
             ],
         ],
     ],
+    'password_reset_exceptions_routes' => [
+        'accounts/*', 'api/accounts/*'
+    ],
 ];
