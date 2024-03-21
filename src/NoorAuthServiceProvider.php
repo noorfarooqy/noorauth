@@ -4,7 +4,7 @@ namespace Noorfarooqy\NoorAuth;
 
 use Illuminate\Support\ServiceProvider;
 use Noorfarooqy\NoorAuth\Commands\NoorPermissions;
-use Noorfarooqy\NoorAuth\Middleware\UserValidationMiddleware;
+use Noorfarooqy\NoorAuth\Services\UserValidationMiddleware;
 
 class NoorAuthServiceProvider extends ServiceProvider
 {

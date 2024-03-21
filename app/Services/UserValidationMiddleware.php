@@ -1,6 +1,6 @@
 <?php
 
-namespace Noorfarooqy\NoorAuth\Middleware;
+namespace Noorfarooqy\NoorAuth\Services;
 
 use App\Contracts\UssdErrorCodes;
 use Closure;
