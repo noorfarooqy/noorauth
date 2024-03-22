@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_system')->after('profile_photo_path')->default(false);
+            $table->boolean('is_system')->before('created_at')->default(false);
         });
     }
 
