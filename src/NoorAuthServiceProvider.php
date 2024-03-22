@@ -27,7 +27,7 @@ class NoorAuthServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../database/migrations/' => database_path('migrations/'),
-        ], 'noorauth-database');
+        ], 'noorauth-migrations');
 
         $this->commands([
             NoorPermissions::class,
