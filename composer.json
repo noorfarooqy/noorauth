@@ -3,9 +3,9 @@
     "description": "Customized Authentication using laravel jetstream and fortify",
     "type": "library",
     "require": {
-        "laravel/jetstream": "^4.0",
+        "laravel/jetstream": "^4.0|^5.0",
         "laravel/framework": "^10.29||^11.0",
-        "laravel/sanctum": "^3.3",
+        "laravel/sanctum": "^3.3|^4.0",
         "spatie/laravel-permission": "^6.4"
     },
     "license": "MIT",
