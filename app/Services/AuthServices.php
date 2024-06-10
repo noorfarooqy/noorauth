@@ -40,6 +40,8 @@ class AuthServices extends NoorServices
                 'api_token' => $token->plainTextToken, // TO DO Set the scope for the token using user permissions
             ];
 
+            Auth::login($user);
+
             $this->setError('', 0);
             $this->setSuccess('success');
             return $this->getResponse($resp);
@@ -78,6 +80,7 @@ class AuthServices extends NoorServices
                 'user' => $user,
                 'api_token' => $token->plainTextToken, // TO DO Set the scope for the token using user permissions
             ];
+            Auth::login($user);
 
             UserRegisteredEvent::dispatch($user);
 
